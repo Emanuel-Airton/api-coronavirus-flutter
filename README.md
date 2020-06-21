@@ -1,2 +1,2 @@
 # api-coronavirus-flutter
-aplicativo flutter usando API com os dados do coronavirus por estado
+Utilizando APi com os dados do coronavirus por estado com flutter
