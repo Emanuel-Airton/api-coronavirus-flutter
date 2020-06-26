@@ -1,6 +1,5 @@
 import 'dart:convert';
 //import 'dart:html';
-import 'package:api_coronavirus/estados.dart';
 import 'package:api_coronavirus/estados1.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -43,9 +42,11 @@ class _initState extends State<init> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.purple[400],
-        title: Text('Covid-19'),
+        title: Text('Dados no Brasil'),
         centerTitle: true,
       ),
+
+      
       body: FutureBuilder<Map>(
         future: dados1(),
         builder: (context, snapshot) {
@@ -82,15 +83,7 @@ class _initState extends State<init> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
                 //padding: EdgeInsets.fromLTRB(10, 10, 100, 10),
                 children: <Widget>[
-                  Text(
-                    'Dados no Brasil',
-                    style: TextStyle(
-                      color: Colors.purple[600],
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w800
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                  
                   Center(
             child: Image.asset(
               'images/covid.png',
