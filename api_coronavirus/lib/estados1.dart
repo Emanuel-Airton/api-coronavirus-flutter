@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:getflutter/getflutter.dart';
 
 class Estados1 extends StatefulWidget {
   @override
@@ -190,8 +192,27 @@ class _Estados1State extends State<Estados1> {
                       indent: 20,
                       endIndent: 20,
                     ),
+                    Padding(padding: EdgeInsets.only(top: 20),
+                    child:
+                     GFButton(
+                onPressed: (){
+                  int index;
+                  options(context, index); 
+                },
+                text: "Central de Atendimento",
+                icon: Icon(Icons.phone_in_talk, color: Colors.white,),
+                color: Colors.purple[300],
+                blockButton: true,
+                size: 40,
+                type: GFButtonType.solid,
+              ),
+                    
+                    )
+                    
+                    
                   ],
-                )),
+                )
+                ),
               ),
               ) ;
              
@@ -199,4 +220,79 @@ class _Estados1State extends State<Estados1> {
           }),
     );
   }
+
+  void options(BuildContext context, int index){
+    showModalBottomSheet(
+      context: context,
+     builder: (context){
+       return BottomSheet(
+         onClosing: (){ 
+
+         },
+         builder: (context){
+            return 
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  //Text("Central de Atendimento", style: TextStyle(fontSize: 20, color: Colors.purple, fontWeight: FontWeight.w900),),
+                  Padding(padding: EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                   children: <Widget>[
+                     FlatButton(
+                    child: Text("Ministério da saúde", style: TextStyle(color: Colors.purple[300], fontSize: 20, fontWeight: FontWeight.w700),),
+                    onPressed: ()async {
+                      await _whpp();
+                    },
+                     ),
+                     Image.asset('images/icone2.png', height: 30,)
+                   ], 
+                  ) 
+                  
+                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                       FlatButton(
+                    child: Text("Disque Saude 136", style: TextStyle(color: Colors.purple[300], fontSize: 20, fontWeight: FontWeight.w700),),
+                    onPressed: ()async{
+                      await _diskSaude();
+                    },
+                     ),
+                     Image.asset('images/icone3.png', height: 30,)
+
+
+                    ],
+
+
+                  )
+                 
+                ],
+              ),
+            );
+          }
+    
+      
+      );
+  });
+}
+_whpp()async{
+  const url = 'https://api.whatsapp.com/send?phone=556199380031&text=oi&source=&data=&app_absent=';
+  if(await canLaunch(url)){
+    await launch(url);
+  }else{
+    throw 'Não foi Possivel acessar $url';
+  }
+}
+_diskSaude()async{
+  const url2 = 'tel: 136';
+  if(await canLaunch(url2)){
+    await launch(url2);
+  }else{
+    throw 'Não foi Possivel acessar $url2';
+  }
+}
 }
