@@ -13,12 +13,13 @@ const req = "https://covid19-brazil-api.now.sh/api/report/v1/brazil";
 //const reqSP = "https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/sp";
 
 void main() async {
-  http.Response resposta = await http.get(req);
+  //http.Response resposta = await http.get(req);
   //print(resposta.body);
-  print((json.decode(resposta.body)));
+  //print((json.decode(resposta.body)));
 
   runApp(MaterialApp(
     home: init(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 
@@ -94,7 +95,7 @@ class _initState extends State<init> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                        Text("Casos: ", style: TextStyle(color: Colors.purple[700], fontSize: 40, fontWeight: FontWeight.w500),),                        Icon(
+                        Text("Casos: ", style: TextStyle(color: Colors.purple[700], fontSize: 40, fontWeight: FontWeight.w800),),                        Icon(
                     Icons.assignment,
                     size: 40.0,
                     color: Colors.blue,
@@ -105,7 +106,7 @@ class _initState extends State<init> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                        Text("Mortes: ", style: TextStyle(color: Colors.purple[700], fontSize: 40, fontWeight: FontWeight.w500),),                        Icon(
+                        Text("Mortes: ", style: TextStyle(color: Colors.purple[700], fontSize: 40, fontWeight: FontWeight.w800),),                        Icon(
                     Icons.sentiment_very_dissatisfied,
                     size: 40.0,
                     color: Colors.red,
@@ -116,7 +117,7 @@ class _initState extends State<init> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                        Text("Recuperados: ", style: TextStyle(color: Colors.purple[700], fontSize: 25, fontWeight: FontWeight.w500),),                        Icon(
+                        Text("Recuperados: ", style: TextStyle(color: Colors.purple[700], fontSize: 25, fontWeight: FontWeight.w800),),                        Icon(
                     Icons.sentiment_very_satisfied,
                     size: 40.0,
                     color: Colors.green,

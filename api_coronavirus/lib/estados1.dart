@@ -11,6 +11,7 @@ class Estados1 extends StatefulWidget {
 }
 
 class _Estados1State extends State<Estados1> {
+  String text;
   String estado;
   String _cases;
   String _mortes;
@@ -79,17 +80,32 @@ class _Estados1State extends State<Estados1> {
                 child: Center(
                     child: Column(
                   children: <Widget>[
-                    TextField(
+                    Row(
+                     children: [
+                       Expanded(child: 
+                        TextField(
                       controller: estadoController,
                       decoration: InputDecoration(
-                          labelText: " Insira as iniciais do estado Ex: sp", labelStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          labelText: " Insira as iniciais do estado Ex: sp", labelStyle: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                       onSubmitted: (text) {
                         est = text;
                         setState(() {
                           // return Text(estado);
                         });
                       },
+                    ),  
+                       ),
+                       
+                    IconButton(icon: Icon(Icons.search, color: Colors.purple,),
+                      onPressed: (){
+                        setState(() {
+                          est = estadoController.text;  
+                        });
+                      
+                      })
+                     ], 
                     ),
+                    
                     Divider(
                       color: Colors.transparent,
                     ),
